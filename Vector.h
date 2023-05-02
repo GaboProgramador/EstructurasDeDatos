@@ -1,41 +1,57 @@
-//Definir un TDA vector
-//Gabriel Jimenez 7182
-
-typedef int Tipo;       //Crear tipo basde de datos para el arreglo
-#define EXT 15
-
-
-class vector{       //Definicion de la clase vector 
+//TDA VECTOR
+#define EXT 20
+class Vector {  //definicion de la clase
 private:
-    Tipo v[EXT];     //Declaracion del atributovector
-    int numEle;     //Numero de elementos ocupados en el vector
+  int n;//dimension del vector
+  int vec[EXT];
 
 public:
-    vector();       //contructor
-    //metodo sets
-    void setV(Tipo val,int pos);
-    void setNumEle(int val);        //metodo que actualiza estado del atributo numEle   
-    //metodo gets 
-    Tipo getV(int pos);
-    int getNumEle();
-    ~vector();
-
+  Vector(){  //metodo constructor
+    setN(0);
+  }
+  void setN(int val) { //metodo que modifica el estado del atributo N
+    n=val;
+  }
+  void setVec(int val,int pos) { //metodo que modifica el estado del atributo VEC
+    vec[pos]=val;
+  }
+  int getN(){ //metodo que devuelve estado del atributo N
+    return n;
+  }
+  int getVec(int pos){ //metodo que devuelve estado del atributo vec
+    return vec[pos];
+  }
+  void leer() {
+    int aux; //variable de lectura
+    for (int i = 0; (i < getN()); i++) { //ciclo del recorrido del vector
+      cout<<endl<<"Ingrese un valor para la posicion: ["<<i<<"]: " ;
+      cin>>aux;
+      setVec(aux,i);//actualizar el arreglo
+    }
+  }
+  void imprimir() {
+    for (int i = 0; (i < getN()); i++) { //ciclo del recorrido del vector
+      cout<<endl<<"Valor almacenado en la posicion: ["<<i<<"]: "<<getVec(i);//actualizar el arreglo
+    }
+  }
+  int buscar(int val) {
+    for (int i = 0; (i < getN()); i++) { //ciclo del recorrido del vector
+      if (getVec(i)==val) {
+        return i;
+      }
+  }
+  return -1;
+ }
+ void bublesort(int n) {
+   int aux,i=0;
+ for (int i=0; i<getN()-1; i++){
+  for (int j=i+1; j<getN(); j++){
+   if(getVec(i)>getVec(j)){
+    aux = getVec(i);
+    getVec(i) = getVec(j);
+    getVec(j) = aux;
+   }
+ }
+}
+ }
 };
-vector::vector(){//oprecion de resolucion de ambito
-
-}
-void vector::setV(Tipo val,int pos){
-    v[pos]=val;
-}
-void vector::setNumEle(int val){
-    numEle=val;
-}
-Tipo vector::getV(int pos){
-    return v[pos];
-}
-int vector::getNumEle(){
-    return numEle;
-}
-vector::~vector(){
-    
-}

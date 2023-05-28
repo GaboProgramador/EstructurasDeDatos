@@ -26,7 +26,7 @@ void leerColaR(Cola *c1){
     cin >> x;
     if(x != FIN){
         if(!c1->colaLlena()){
-        c1 -> insentar(x);
+        c1 -> insertar(x);
         leerColaR(c1);
         }else{
             cout << endl << "C1:'Ya me llene :('";
